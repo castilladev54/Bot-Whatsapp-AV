@@ -1,0 +1,150 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0FBC48B5C8C5463F14C',
+    participant: undefined
+  },
+  messageTimestamp: 1748893572,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'hola',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'hola',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_f4d7f9d7-5077-418c-8528-8e568f286653',
+  keyword: 'key_e8b5c997-0329-4442-b483-15abc0c55495',
+  answer: '🙌 Hola bienvenido a *Asistavet de Venezuela CA*',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '18510f0229dbc3798519baeca51e1221'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_9458e53d-bc15-4563-b8f1-13d01c03cb1c',
+  keyword: 'ans_f4d7f9d7-5077-418c-8528-8e568f286653',
+  answer: 'Escribe *ayuda* para ver las opciones disponibles',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '0e03063f7c520063e822cb4613efabed'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB077035DB4FFF986E49D',
+    participant: undefined
+  },
+  messageTimestamp: 1748893575,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'ayuda',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'ayuda',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_21e41772-8e28-490f-b910-93122f402e0a',
+  keyword: 'key_bb6538e3-10e4-422b-9727-c0df409dd355',
+  answer: 'Escribe la opción que deseas:\r\n' +
+    '\r\n' +
+    '1️⃣¡Mi mascota atención necesita urgente! 🚨 Si tienes una emergencia con tu perro o gato y necesitas un veterinario a domicilio de inmediato.\r\n' +
+    '\r\n' +
+    '2️⃣Deseo programar una consulta médica. 🗓️ Para agendar una cita veterinaria para un chequeo general o una consulta específica.\r\n' +
+    '\r\n' +
+    '3️⃣ Necesito vacunar a mi perro o gato. 💉 Si tu animal de compañía requiere la aplicación de sus vacunas.\r\n' +
+    '\r\n' +
+    '4️⃣ Quiero esterilizar o castrar a mi mascota. 🩺 Para solicitar información o programar la cirugía de esterilización/castración de tu perro o gato.\r\n' +
+    '\r\n' +
+    '5️⃣ Ninguna de las anteriores. 🤔 Si tu necesidad no se encuentra en las opciones anteriores.\r\n' +
+    '\r\n' +
+    '💡 Puedes escribir solo el número (por ejemplo: "1", "2","3","4","5" ) o el nombre de la opción.',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'a4d4e45c1d1f3e38a9ade41c76a883e1'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB061C8865497DEE73529',
+    participant: undefined
+  },
+  messageTimestamp: 1748893582,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: '2',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: '2',
+  from: '584123895689'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB051BF61C815617D6C1E',
+    participant: undefined
+  },
+  messageTimestamp: 1748893609,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'si',
+  from: '584123895689'
+}

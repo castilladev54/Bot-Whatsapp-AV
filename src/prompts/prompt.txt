@@ -1,0 +1,13 @@
+Escribe la opción que deseas:
+
+1️⃣¡Mi mascota atención necesita urgente! 🚨 Si tienes una emergencia con tu perro o gato y necesitas un veterinario a domicilio de inmediato.
+
+2️⃣Deseo programar una consulta médica. 🗓️ Para agendar una cita veterinaria para un chequeo general o una consulta específica.
+
+3️⃣ Necesito vacunar a mi perro o gato. 💉 Si tu animal de compañía requiere la aplicación de sus vacunas.
+
+4️⃣ Quiero esterilizar o castrar a mi mascota. 🩺 Para solicitar información o programar la cirugía de esterilización/castración de tu perro o gato.
+
+5️⃣ Ninguna de las anteriores. 🤔 Si tu necesidad no se encuentra en las opciones anteriores.
+
+💡 Puedes escribir solo el número (por ejemplo: "1", "2","3","4","5" ) o el nombre de la opción.
