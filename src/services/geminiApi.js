@@ -10,7 +10,9 @@ async function startChat() {
   const model = genAI.getGenerativeModel({ 
     model: "gemini-1.5-flash",
     generationConfig: {
-      maxOutputTokens: 200,
+      maxOutputTokens: 800,
+      temperature: 0,
+      
     },
   });
 
@@ -23,7 +25,7 @@ async function startChat() {
       },
       {
         role: "model",
-        parts: [{ text: "Responde en español, eres gracioso" }],
+        parts: [{ text: "Responde en español," }],
       },
     ],
   });

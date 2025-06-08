@@ -2,10 +2,10 @@
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0FBC48B5C8C5463F14C',
+    id: '3EB0FA3C6D932C6B1C449C',
     participant: undefined
   },
-  messageTimestamp: 1748893572,
+  messageTimestamp: 1749355534,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
@@ -20,9 +20,16 @@
   from: '584123895689'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_f4d7f9d7-5077-418c-8528-8e568f286653',
-  keyword: 'key_e8b5c997-0329-4442-b483-15abc0c55495',
-  answer: '🙌 Hola bienvenido a *Asistavet de Venezuela CA*',
+  ref: 'ans_62bdb37d-3b5a-43fd-a308-4374c3f4f774',
+  keyword: 'key_432c710e-d746-4ebc-a650-1c4a97e57516',
+  answer: '🙌*¡Gracias por comunicarte con Asistavet de Venezuela CA*🐾\n' +
+    'Expertos en el cuidado animal!!\n' +
+    '\n' +
+    '*Soy Asistenci!*\n' +
+    'Un bot 🤖 diseñado para acompañarte en cada momento!\n' +
+    '\n' +
+    '*¿Cómo puedo ayudarte?*\n' +
+    '💬 Escribe por favor la palabra *Ayuda* para que conozcas las opciones que tenemos para ti.',
   options: {
     media: null,
     buttons: [],
@@ -35,12 +42,12 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '18510f0229dbc3798519baeca51e1221'
+  refSerialize: 'd14f7ff8d5d1e88a8e1b60bed3107203'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_9458e53d-bc15-4563-b8f1-13d01c03cb1c',
-  keyword: 'ans_f4d7f9d7-5077-418c-8528-8e568f286653',
-  answer: 'Escribe *ayuda* para ver las opciones disponibles',
+  ref: 'ans_8c4dc3d9-f914-4cac-9bd1-fd85e23dd8aa',
+  keyword: 'ans_62bdb37d-3b5a-43fd-a308-4374c3f4f774',
+  answer: '__call_action__',
   options: {
     media: null,
     buttons: [],
@@ -51,18 +58,36 @@
     ref: null,
     nested: [],
     keyword: {},
-    callback: false
+    callback: true
   },
-  refSerialize: '0e03063f7c520063e822cb4613efabed'
+  refSerialize: '800e391a12ce53e40eea876eb8b18520'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_be631d83-b79d-4dae-be77-52ca32d43673',
+  keyword: 'ans_8c4dc3d9-f914-4cac-9bd1-fd85e23dd8aa',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '99d74546061e249383876a87c31618d0'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB077035DB4FFF986E49D',
+    id: '3EB0968BAF1A295A088A85',
     participant: undefined
   },
-  messageTimestamp: 1748893575,
+  messageTimestamp: 1749355537,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
@@ -77,21 +102,19 @@
   from: '584123895689'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_21e41772-8e28-490f-b910-93122f402e0a',
-  keyword: 'key_bb6538e3-10e4-422b-9727-c0df409dd355',
-  answer: 'Escribe la opción que deseas:\r\n' +
+  ref: 'ans_581d8e74-3067-4517-abea-70bbf595e72d',
+  keyword: 'key_22db8333-d82a-4d54-939f-802dd84685ce',
+  answer: '📋 *Menú de Opciones*\r\n' +
     '\r\n' +
-    '1️⃣¡Mi mascota atención necesita urgente! 🚨 Si tienes una emergencia con tu perro o gato y necesitas un veterinario a domicilio de inmediato.\r\n' +
+    '1. 🚨 Tengo una *Emergencia*! Necesito vengan a Domicilio 🏡.\r\n' +
     '\r\n' +
-    '2️⃣Deseo programar una consulta médica. 🗓️ Para agendar una cita veterinaria para un chequeo general o una consulta específica.\r\n' +
+    '2. 🔎 Quiero una *Consulta* Médica Programada 📆.\r\n' +
     '\r\n' +
-    '3️⃣ Necesito vacunar a mi perro o gato. 💉 Si tu animal de compañía requiere la aplicación de sus vacunas.\r\n' +
+    '3. 💉 Quiero información sobre la *Vacunación* de mi animal de compañía 🐶/🐱.\r\n' +
     '\r\n' +
-    '4️⃣ Quiero esterilizar o castrar a mi mascota. 🩺 Para solicitar información o programar la cirugía de esterilización/castración de tu perro o gato.\r\n' +
+    '4. ✂ Quiero información sobre los Procedimientos de *Esterilización* 🐶 / 🐱.\r\n' +
     '\r\n' +
-    '5️⃣ Ninguna de las anteriores. 🤔 Si tu necesidad no se encuentra en las opciones anteriores.\r\n' +
-    '\r\n' +
-    '💡 Puedes escribir solo el número (por ejemplo: "1", "2","3","4","5" ) o el nombre de la opción.',
+    '5. ❌ Salir del menú🚪 ',
   options: {
     media: null,
     buttons: [],
@@ -104,47 +127,26 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'a4d4e45c1d1f3e38a9ade41c76a883e1'
+  refSerialize: '22a8980540cd2e3080e88dac846996c3'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB061C8865497DEE73529',
+    id: '3EB06E2B07975DCCB5F363',
     participant: undefined
   },
-  messageTimestamp: 1748893582,
+  messageTimestamp: 1749355540,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
-    conversation: '2',
+    conversation: '3',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
-  body: '2',
-  from: '584123895689'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '584123895689@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB051BF61C815617D6C1E',
-    participant: undefined
-  },
-  messageTimestamp: 1748893609,
-  pushName: 'Sol Varela',
-  broadcast: false,
-  message: Message {
-    conversation: 'si',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'si',
+  body: '3',
   from: '584123895689'
 }

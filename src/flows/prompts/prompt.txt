@@ -1,0 +1,11 @@
+📋 *Menú de Opciones*
+
+1. 🚨 Tengo una *Emergencia*! Necesito vengan a Domicilio 🏡.
+
+2. 🔎 Quiero una *Consulta* Médica Programada 📆.
+
+3. 💉 Quiero información sobre la *Vacunación* de mi animal de compañía 🐶/🐱.
+
+4. ✂ Quiero información sobre los Procedimientos de *Esterilización* 🐶 / 🐱.
+
+5. ❌ Salir del menú🚪 
