@@ -1,9 +1,10 @@
 // 📁 src/flows/flowEmergenciaDetallada.js
-const { addKeyword, gotoFlow } = require("@bot-whatsapp/bot");
+const { addKeyword } = require("@bot-whatsapp/bot");
 const { askAndRespond } = require("../services/geminiApi.js");
-const flowAgendar = require("./flowAgendar.js"); // Necesario para redirigir
-const menuFlow = require("./menuFlow.js"); // Necesario para redirigir
+const flowAgendar = require("./flowAgendar.js");
+const menuFlow = require("./menuFlow.js");
 
+// ✅ Función para extraer secciones del texto de Gemini
 // Función parseGeminiResponse CORREGIDA
 function parseGeminiResponse(response) {
   // Usamos regex más tolerantes con espacios
@@ -22,44 +23,37 @@ function parseGeminiResponse(response) {
       "No se pudo extraer la información de precios.",
     nextSteps:
       nextStepsMatch?.[1]?.trim() ||
-      "Por favor escribe *AGENDAR* para programar una cita.",
+      "⏳",
   };
 }
 
-// 🧠 Función para construir el prompt completo y dinámico para Gemini
+// ✅ Prompt personalizado para casos de emergencia
 const buildEmergencyPrompt = (data) => {
-  const ownerName = data.ownerName || "dueño(a)";
-  const userLocation = data.userLocation || "ubicación no especificada";
-  const emergencyDescription = data.emergencyDescription || "No indicada";
-  const species = data.species || "No indicada";
-  const patientAge = data.patientAge || "No indicada";
-  const patientGender = data.patientGender || "No indicado";
-  const medicalHistory = data.medicalHistory || "No especificado";
-  const patientName = data.patientName || "tu mascota"; // Asegúrate de que el nombre de la mascota se capture
+  const {
+    ownerName = "dueño(a)",
+    userLocation = "ubicación no especificada",
+    emergencyDescription = "No indicada",
+    species = "No indicada",
+    patientAge = "No indicada",
+    patientGender = "No indicado",
+    medicalHistory = "No especificado",
+    patientName = "tu mascota",
+  } = data;
 
-  // Lógica para determinar el emoji de la especie
-  let speciesEmoji = "🐾"; // Emoji por defecto
-  if (species.toLowerCase().includes("perro")) {
-    speciesEmoji = "🐶";
-  } else if (species.toLowerCase().includes("gato")) {
-    speciesEmoji = "🐱";
-  } else if (species.toLowerCase().includes("ave")) {
-    speciesEmoji = "🦜";
-  } else if (species.toLowerCase().includes("conejo")) {
-    speciesEmoji = "🐰";
-  } else if (species.toLowerCase().includes("ganado")) {
-    speciesEmoji = "🐎";
-  } else if (
-    species.toLowerCase().includes("hamster") ||
-    species.toLowerCase().includes("roedor")
-  ) {
-    speciesEmoji = "🐹";
-  }
+  // 🐾 Determinar emoji según especie
+  let speciesEmoji = "🐾";
+  const lower = species.toLowerCase();
+  if (lower.includes("perro")) speciesEmoji = "🐶";
+  else if (lower.includes("gato")) speciesEmoji = "🐱";
+  else if (lower.includes("ave")) speciesEmoji = "🦜";
+  else if (lower.includes("conejo")) speciesEmoji = "🐰";
+  else if (lower.includes("ganado")) speciesEmoji = "🐎";
+  else if (lower.includes("hamster") || lower.includes("roedor")) speciesEmoji = "🐹";
 
   return `
 Eres *Asistavet*, un asistente veterinario virtual de la clínica Asistavet de Venezuela C.A., ubicada en Ocumare del Tuy. Tu objetivo es evaluar la situación de la mascota y guiar al usuario hacia la mejor acción posible, priorizando la salud del animal y la eficiencia del servicio.
 
-El usuario, ${ownerName}, ha proporcionado la siguiente información sobre la situación:
+El usuario, ${ownerName}, ha proporcionado la siguiente información:
 - **Síntomas detallados:** "${emergencyDescription}"
 - **Ubicación actual:** "${userLocation}"
 - **Especie:** "${species}"
@@ -68,95 +62,52 @@ El usuario, ${ownerName}, ha proporcionado la siguiente información sobre la si
 - **Nombre del paciente:** "${patientName}"
 - **Historial médico previo:** "${medicalHistory}"
 
-Basado en esta información, necesito que tu respuesta sea directa, empática, no técnica y siga el siguiente formato estricto. Tu respuesta debe *ocultar cualquier mención explícita de "Clasificación de Urgencia" o emojis como 🚨/⚠️/🟢*, pero la urgencia debe manifestarse en el tono y las acciones recomendadas.
+Tu respuesta debe ser empática, clara, no técnica y con el siguiente formato:
 
-**Formato de Respuesta Final:**
-
-NUESTRA EVALUACIÓN Y LO QUE RECOMENDAMOS
-INFORMACIÓN DE PRECIO Y CONTACTO
+NUESTRA EVALUACIÓN Y LO QUE RECOMENDAMOS  
+INFORMACIÓN DE PRECIO Y CONTACTO  
 PRÓXIMO PASOS
 
-Detalles para cada sección que DEBES GENERAR en tu respuesta:**
+1. *NUESTRA EVALUACIÓN Y LO QUE RECOMENDAMOS:*  
+Una frase sencilla sobre lo que parece estar ocurriendo. Sin tecnicismos.
 
-1.NUESTRA EVALUACIÓN Y LO QUE RECOMENDAMOS:**
-Primeras observaciones:** Una frase corta y muy sencilla sobre lo que parece estar ocurriendo con ${patientName}. *Evita cualquier término médico complejo.* Ejemplo: "Parece que ${patientName} tiene un malestar estomacal." o "Podría ser una reacción alérgica."
- 
-2. INFORMACIÓN DE PRECIO Y CONTACTO:**
+2. *INFORMACIÓN DE PRECIO Y CONTACTO:*  
+- Si el usuario está en los Valles del Tuy (Ocumare, Santa Teresa, etc): "Te recomendamos dirigirte sin demora a nuestra sede en *Ocumare del Tuy, Calle Sucre (Ppal del Calvario), frente al Pez que fuma*."
+- Si es Caracas o lejana: "Podemos enviar un equipo a domicilio. Lo coordinaremos por llamada."
 
-A continuación, basa tu siguiente instrucción en la URGENCIA INFERIDA y la ${userLocation}:**
-
-* Luego, basándote en la ${userLocation} (Ocumare, Santa Teresa, Yare, Charallave, Cúa vs. Caracas u otra):
-* Si es una ubicación del Tuy: "Te recomendamos dirigirte sin demora a nuestra sede de consulta ubicada en: *Ocumare del Tuy, Calle Sucre (Ppal del Calvario), en frente de las instalaciones del Pez que fuma*."
-* Si es Caracas o lejana/domicilio: "Si lo deseas, un equipo Veterinario puede trasladarse *hasta tu domicilio* para mayor comodidad, tuya y de ${patientName} ${speciesEmoji}. Coordinaremos esto en la llamada."
-* **NO** mencionar "agendar cita" en esta sección. El foco es la acción inmediata.
-
-3. PRÓXIMO PASOS:
-1️⃣ Para AGENDAR CITA " y "2️⃣ Para VOLVER AL MENÚ ".
-¡Gracias ${ownerName}! Por depositar en nosotros la salud y los cuidados de ${patientName} ${speciesEmoji}.
-
-Considera siempre el ${ownerName} y la ${userLocation} para personalizar la respuesta y mantener un tono amigable.*
-${speciesEmoji}** Reemplaza este placeholder con el emoji de mascota más apropiado según la especie (ej. 🐶 para perro, 🐱 para gato, 🦜 para ave, 🐠 para pez, 🐹 para roedor). Si no se puede determinar la especie, usa 🐾.
+3. *PRÓXIMO PASOS:*  
+1️⃣ Para AGENDAR CITA  
+2️⃣ Para VOLVER AL MENÚ  
+¡Gracias ${ownerName}! Por confiar en nosotros para cuidar a ${patientName} ${speciesEmoji}.
 `;
 };
 
-const flowEmergenciaDetallada = addKeyword(["emergencia", "urgencia"], {
-  sensitive: true,
-})
-  .addAnswer(
-    "¡Hola! Soy un Asistente Virtual 🤖!!! Cuéntame qué está presentando tu animal de compañía? Y ¿Desde cuándo?",
-    { capture: true },
-    async (ctx, { state, fallBack }) => {
-      const body = ctx.body?.trim();
-      if (!body)
-        return fallBack(
-          "❌ Es importante que me cuentes lo que le pasa. Por favor, describe los síntomas de tu animal de compañía."
-        );
-      await state.update({ emergencyDescription: body });
+// 🧠 Flujo principal de emergencia
+const flowEmergenciaDetallada = addKeyword(["emergencia", "urgencia"], { sensitive: true })
+  .addAnswer("¡Hola! Soy un Asistente 🤖 ¿Qué síntomas presenta tu animal de compañía y desde cuándo?", { capture: true }, async (ctx, { state, fallBack }) => {
+    if (!ctx.body?.trim()) {
+      return fallBack("❌ Por favor, describe los síntomas de tu compañero.");
     }
-  )
-  .addAnswer(
-    "📍¿De dónde nos escribes? O ¿Dónde se encuentra el paciente?",
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ userLocation: ctx.body.trim() });
-    }
-  )
-  .addAnswer(
-    "🐾 ¿Qué especie es tu compañero? (*Perro*, *Gato*, *Ganado*, *Otro*):",
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ species: ctx.body.trim() });
-    }
-  )
-  .addAnswer(
-    "⚤ ¿Cuál es el *sexo* de tu compañero? (*Macho* / *Hembra*):",
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ patientGender: ctx.body.trim() });
-    }
-  )
-  .addAnswer(
-    "🎂 ¿Cuál es la *edad aproximada* de tu animal de compañía?:",
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ patientAge: ctx.body.trim() });
-    }
-  )
-  .addAnswer(
-    "📝 Entendido. ¿Cuál es el *nombre del paciente* (tu compañero)?", // CORRECTED: This now saves to patientName
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ patientName: ctx.body.trim() }); // Corrected variable
-    }
-  )
-  .addAnswer(
-    "🙋‍♂️ ¿Con quién tenemos el gusto de conversar? (Tu nombre como tutor/responsable)",
-    { capture: true },
-    async (ctx, { state }) => {
-      await state.update({ ownerName: ctx.body.trim() });
-    }
-  )
-
+    await state.update({ emergencyDescription: ctx.body.trim() });
+  })
+  .addAnswer("📍 ¿Desde dónde nos escribes o dónde se encuentra el paciente?", { capture: true }, async (ctx, { state }) => {
+    await state.update({ userLocation: ctx.body.trim() });
+  })
+  .addAnswer("🐾 ¿Qué especie es? (Perro, Gato, Ganado, Otro)", { capture: true }, async (ctx, { state }) => {
+    await state.update({ species: ctx.body.trim() });
+  })
+  .addAnswer("⚤ ¿Sexo? (Macho / Hembra)", { capture: true }, async (ctx, { state }) => {
+    await state.update({ patientGender: ctx.body.trim() });
+  })
+  .addAnswer("🎂 ¿Cuál es la *edad aproximada* de tu animal de compañía?:", { capture: true }, async (ctx, { state }) => {
+    await state.update({ patientAge: ctx.body.trim() });
+  })
+  .addAnswer("📝 Entendido. ¿Cuál es el *nombre del paciente* (tu compañero", { capture: true }, async (ctx, { state }) => {
+    await state.update({ patientName: ctx.body.trim() });
+  })
+  .addAnswer("🙋‍♂️ ¿Con quién tenemos el gusto de conversar? (Tu nombre como tutor/responsable", { capture: true }, async (ctx, { state }) => {
+    await state.update({ ownerName: ctx.body.trim() });
+  })
   .addAnswer(
     "📋 ¿Tu animal de compañía tiene *alguna condición médica previa* que debamos saber? (Escríbela o pon 'ninguna')",
     { capture: true },
@@ -213,5 +164,37 @@ const flowEmergenciaDetallada = addKeyword(["emergencia", "urgencia"], {
         return gotoFlow(menuFlow); // Exit to menu on error
       }
     }
-  );
-module.exports = flowEmergenciaDetallada;
+  )
+  .addAction(
+  { capture: true },
+  async (ctx, { gotoFlow, fallBack, flowDynamic, state }) => {
+    try {
+      const msg = ctx.body.trim();
+      const fullState = await state.getMyState();
+
+      // Validación de nombre de mascota
+      if (!fullState.patientName) {
+        await flowDynamic("⚠️ No hemos registrado el nombre de tu mascota. Volviendo al inicio.");
+        return gotoFlow(flowBienvenida);
+      }
+      
+      if (msg === "1") {
+        await flowDynamic("🚀 ¡Perfecto! Vamos a agendar tu cita.");
+        return gotoFlow(flowAgendar);
+      } 
+      
+      if (msg === "2") {
+        await flowDynamic("🏡 Volviendo al menú principal...");
+        return gotoFlow(menuFlow);
+      }
+
+      return fallBack("❌ Opción no válida. Por favor escribe *1* o *2*.");
+    } catch (error) {
+      console.error("Error en addAction:", error);
+      await flowDynamic("🔴 Error inesperado. Redirigiendo al menú principal...");
+      return gotoFlow(menuFlow);
+    }
+  }
+)
+
+module.exports= flowEmergenciaDetallada;

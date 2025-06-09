@@ -6,7 +6,7 @@ const flowPrincipal = addKeyword(EVENTS.WELCOME)
       "🙌*¡Gracias por comunicarte con Asistavet de Venezuela CA*🐾", 
       "Expertos en el cuidado animal!!",
       "",
-      "*Soy Asistenci!*",  
+      "*AssistBot🤖!*",  
       "Un bot 🤖 diseñado para acompañarte en cada momento!",
       "",
       "*¿Cómo puedo ayudarte?*", 

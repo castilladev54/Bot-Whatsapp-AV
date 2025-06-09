@@ -23,7 +23,7 @@ const flowVacuna = addKeyword(EVENTS.ACTION).addAnswer(
         "  - Certificado de vacunación\n" +
         "  - Asesoría especializada",
 
-      "\n🏥 *PRECIOS EN CLÍNICA:*\n" + "🐶 Perros: *$35*\n" + "🐱 Gatos: *$45*",
+      "\n🏥 *PRECIOS EN NUESTRA SEDE:*\n" + "🐶 Perros: *$35*\n" + "🐱 Gatos: *$45*",
 
       "\n📍 *Beneficios adicionales:*\n" +
         "• Atención personalizada\n" +

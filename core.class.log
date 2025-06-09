@@ -2,10 +2,10 @@
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0FA3C6D932C6B1C449C',
+    id: '3EB07DFD210C9E4F6011A4',
     participant: undefined
   },
-  messageTimestamp: 1749355534,
+  messageTimestamp: 1749481847,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
@@ -20,12 +20,12 @@
   from: '584123895689'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_62bdb37d-3b5a-43fd-a308-4374c3f4f774',
-  keyword: 'key_432c710e-d746-4ebc-a650-1c4a97e57516',
+  ref: 'ans_824abb24-83b8-43b6-815b-c2d8fe152b44',
+  keyword: 'key_ba3c9b26-de28-40a1-8ed8-8e2b563ad53e',
   answer: '🙌*¡Gracias por comunicarte con Asistavet de Venezuela CA*🐾\n' +
     'Expertos en el cuidado animal!!\n' +
     '\n' +
-    '*Soy Asistenci!*\n' +
+    '*AssistBot🤖!*\n' +
     'Un bot 🤖 diseñado para acompañarte en cada momento!\n' +
     '\n' +
     '*¿Cómo puedo ayudarte?*\n' +
@@ -42,11 +42,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'd14f7ff8d5d1e88a8e1b60bed3107203'
+  refSerialize: 'c068fafc936d04d44cdbb4f21de68148'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8c4dc3d9-f914-4cac-9bd1-fd85e23dd8aa',
-  keyword: 'ans_62bdb37d-3b5a-43fd-a308-4374c3f4f774',
+  ref: 'ans_beed9612-90ab-4189-a479-1ddbf7288ce4',
+  keyword: 'ans_824abb24-83b8-43b6-815b-c2d8fe152b44',
   answer: '__call_action__',
   options: {
     media: null,
@@ -60,11 +60,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '800e391a12ce53e40eea876eb8b18520'
+  refSerialize: '805eb7ae98d125544fa74487f23faa8a'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_be631d83-b79d-4dae-be77-52ca32d43673',
-  keyword: 'ans_8c4dc3d9-f914-4cac-9bd1-fd85e23dd8aa',
+  ref: 'ans_2c2c38ee-99f3-4917-aac5-6a6c6a5dcda8',
+  keyword: 'ans_beed9612-90ab-4189-a479-1ddbf7288ce4',
   answer: '__call_action__',
   options: {
     media: null,
@@ -78,16 +78,16 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '99d74546061e249383876a87c31618d0'
+  refSerialize: '0c8a35f4fb19eb0d5bc0734882755c83'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0968BAF1A295A088A85',
+    id: '3EB00FB2AC5E79969BACDE',
     participant: undefined
   },
-  messageTimestamp: 1749355537,
+  messageTimestamp: 1749481867,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
@@ -102,8 +102,8 @@
   from: '584123895689'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_581d8e74-3067-4517-abea-70bbf595e72d',
-  keyword: 'key_22db8333-d82a-4d54-939f-802dd84685ce',
+  ref: 'ans_0a8fea69-4bbd-4408-9215-4a2cf609d6a5',
+  keyword: 'key_96e9e997-c781-4115-b5e5-0b94784a8cd5',
   answer: '📋 *Menú de Opciones*\r\n' +
     '\r\n' +
     '1. 🚨 Tengo una *Emergencia*! Necesito vengan a Domicilio 🏡.\r\n' +
@@ -127,26 +127,359 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '22a8980540cd2e3080e88dac846996c3'
+  refSerialize: '3a1785773fac6d09dd301e8eed7508a8'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '584123895689@s.whatsapp.net',
     fromMe: false,
-    id: '3EB06E2B07975DCCB5F363',
+    id: '3EB0C63BF18E70E6B90B95',
     participant: undefined
   },
-  messageTimestamp: 1749355540,
+  messageTimestamp: 1749481874,
   pushName: 'Sol Varela',
   broadcast: false,
   message: Message {
-    conversation: '3',
+    conversation: '1',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
-  body: '3',
+  body: '1',
+  from: '584123895689'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0568A34A3869CE220DE',
+    participant: undefined
+  },
+  messageTimestamp: 1749481886,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'tiene dolor y la pata',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'tiene dolor y la pata',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_e1428141-61bc-4382-a70d-89aa184d6269',
+  keyword: 'ans_e5f5d1c9-1066-46e3-a5f9-50e3e948149c',
+  answer: '📍 ¿Desde dónde nos escribes o dónde se encuentra el paciente?',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '872d5c56aadac50788418b3e6ee8f6ed'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0396015AA752619EAC6',
+    participant: undefined
+  },
+  messageTimestamp: 1749481891,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'ocumare',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'ocumare',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2c583fb3-78fd-49a4-b9dd-6a2170e95777',
+  keyword: 'ans_e1428141-61bc-4382-a70d-89aa184d6269',
+  answer: '🐾 ¿Qué especie es? (Perro, Gato, Ganado, Otro)',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '8524ee5c2b70d9178340a337f287e931'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0C4D07D7FD2007F94CC',
+    participant: undefined
+  },
+  messageTimestamp: 1749481896,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'gato',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'gato',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_51b31e0f-8fc4-4230-aeaa-d5fc1fa9f62b',
+  keyword: 'ans_2c583fb3-78fd-49a4-b9dd-6a2170e95777',
+  answer: '⚤ ¿Sexo? (Macho / Hembra)',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '8fc153e5cace3a83267ba05f30f010d6'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB05EA4939837068EB6F2',
+    participant: undefined
+  },
+  messageTimestamp: 1749481903,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'macho',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'macho',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_b69ad747-d9dd-441d-b792-519df66775ed',
+  keyword: 'ans_51b31e0f-8fc4-4230-aeaa-d5fc1fa9f62b',
+  answer: '🎂 ¿Cuál es la *edad aproximada* de tu animal de compañía?:',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '3605b6258b3204cc573ddef739aeb8d9'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0A74B9FEAE8CFAD8579',
+    participant: undefined
+  },
+  messageTimestamp: 1749481908,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: '5 meses',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: '5 meses',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2691b48d-61a1-4bb2-adb2-62ad8fd37ee4',
+  keyword: 'ans_b69ad747-d9dd-441d-b792-519df66775ed',
+  answer: '📝 Entendido. ¿Cuál es el *nombre del paciente* (tu compañero',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'edf86be73e8e37f5fa0a86761f157597'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0986E2B3E048F1FCCFD',
+    participant: undefined
+  },
+  messageTimestamp: 1749481914,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'michi',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'michi',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_21b38880-4032-45d5-b2bf-c2cf788b44ce',
+  keyword: 'ans_2691b48d-61a1-4bb2-adb2-62ad8fd37ee4',
+  answer: '🙋‍♂️ ¿Con quién tenemos el gusto de conversar? (Tu nombre como tutor/responsable',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '784fb776c177c789f8cfbbcf4d48daa7'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB00E4FC4E73C1B663FF0',
+    participant: undefined
+  },
+  messageTimestamp: 1749481920,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'Juan',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Juan',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_3aa117d2-8de0-4433-b24a-1e11a99aadaf',
+  keyword: 'ans_21b38880-4032-45d5-b2bf-c2cf788b44ce',
+  answer: "📋 ¿Tu animal de compañía tiene *alguna condición médica previa* que debamos saber? (Escríbela o pon 'ninguna')",
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'a4592531199dd11edc80d0b44b7ed397'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0D07D3088433224DBD2',
+    participant: undefined
+  },
+  messageTimestamp: 1749481923,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: 'no',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'no',
+  from: '584123895689'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2bcb7ddd-d850-44b0-bd30-fdc15bdb9c7b',
+  keyword: 'ans_3aa117d2-8de0-4433-b24a-1e11a99aadaf',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '55c7b3bb436ecc2a046c3ce1f17bfcc2'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '584123895689@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0CB4265179E723BEDF6',
+    participant: undefined
+  },
+  messageTimestamp: 1749481962,
+  pushName: 'Sol Varela',
+  broadcast: false,
+  message: Message {
+    conversation: '1',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: '1',
   from: '584123895689'
 }
