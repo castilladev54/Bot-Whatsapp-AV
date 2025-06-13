@@ -1,6 +1,6 @@
 const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
-const flowAgendar = require("../flows/flowAgendar.js");
-const { delay } = require("@whiskeysockets/baileys");
+
+
 
 // Flujo: Consultas
 const flowConsultas = addKeyword(EVENTS.ACTION)
@@ -29,13 +29,12 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
 Importante: El costo del servicio puede presentar variación, dependiendo de la ubicación y el acceso a su domicilio. 🏡
 Así como si la naturaleza del animal y su agresividad no permite realizar la toma de muestra es necesario trabajar bajo sedación😴. 
 
-
 ¿Deseas agendar ahora? (*SI* o *NO*)`,
     { capture: true },
     async (ctx, { gotoFlow, endFlow }) => {
       const response = ctx.body.toLowerCase().trim();
       if (response === "si") {
-        return gotoFlow(flowAgendar);
+        return gotoFlow(require("./flowAgendar.js"))
       } else if (response === "no") {
         return endFlow(
           "🔄 Puedes volver a escribir *menu* cuando lo necesites."

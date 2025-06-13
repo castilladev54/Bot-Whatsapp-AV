@@ -1,6 +1,6 @@
 // 📁 src/flows/flowCirugia.js
 const { addKeyword} = require("@bot-whatsapp/bot");
-const flowAgendar = require("./flowAgendar.js"); // CORRECTED: Path for flowAgendar
+
 
 // Flujo: Cirugía (Esterilización Felina)
 // RECOMENDACIÓN: Usa palabras clave explícitas o el número de opción del menú
@@ -25,22 +25,14 @@ const flowCirugia = addKeyword(["cirugia", "esterilizacion",], { sensitive: true
   "🌆 Frente a las instalaciones del Pez que Fuma",
   "🏙 Ocumare del Tuy",
   " ",
-  "⏰ *Horario de atención:*",
-  "Lunes a Sabado: 8:00 AM - 4:00 PM",
+  "¿Deseas agendar ahora? (*SI* o *NO*)",
 
-  " ",
-  "📞 *Contacto:*",
-  "📱 [+58 424-1731880]",
-
-  " ",
-  "¿Te gustaría agendar una cita ahora?",
-  "Responde *SI* para reservar o *NO* para volver al menú"
 ]
     .join("\n"),
     { capture: true },
     async (ctx, { gotoFlow, endFlow }) => {
       if (ctx.body.toLowerCase() === "si") {
-        return gotoFlow(flowAgendar);
+        return gotoFlow(require("./flowAgendar.js"))
       }
       return endFlow("🔄 Entendido. Puedes volver a escribir *menu* cuando lo necesites para ver otras opciones.");
     }

@@ -10,7 +10,7 @@ const flowPrincipal = addKeyword(EVENTS.WELCOME)
       "Un bot 🤖 diseñado para acompañarte en cada momento!",
       "",
       "*¿Cómo puedo ayudarte?*", 
-      "💬 Escribe por favor la palabra *Ayuda* para que conozcas las opciones que tenemos para ti.",
+      "💬 Escribe por favor la palabra *AYUDA* para que conozcas las opciones que tenemos para ti.",
     ].join("\n")
   )
   .addAction(async (ctx, { gotoFlow }) => {
