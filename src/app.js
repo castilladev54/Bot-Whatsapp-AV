@@ -1,4 +1,5 @@
 // src/app.js
+require("dotenv").config();
 const {
   createBot,
   createProvider,
@@ -7,7 +8,7 @@ const {
 const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const MongoAdapter = require("@bot-whatsapp/database/mongo");
-require("dotenv").config();
+
 
 // Importación de flujos separados (Clean Architecture)
 const flowPrincipal = require("./flows/flowPrincipal.js");
