@@ -24,7 +24,7 @@ const flowConfirmarCita = require("./flows/flowConfirmarCita.js");
 const main = async () => {
   try {
     // Validar variable de entorno Mongo
-    if (!process.env.MONGO_DB_URI || !process.env.MONGO_DB_URI.startsWith('mongodb')) {
+    if (!process.env.MONGO_URL || !process.env.MONGO_URL.startsWith('mongodb')) {
       throw new Error('❌ URI de Mongo no definida o inválida. Verifica la variable MONGO_DB_URI en Railway o en tu entorno.');
     }
 
@@ -32,7 +32,7 @@ const main = async () => {
 
     // Crear adaptador de base de datos
     const adapterDB = new MongoAdapter({
-      dbUri: process.env.MONGO_DB_URI,
+      dbUri: process.env.MONGO_URL,
       dbName: "Asistavetdb",
     });
 
