@@ -18,38 +18,55 @@ const flowVacuna = require("./flows/flowVacuna.js");
 const flowCirugia = require("./flows/flowCirugia.js");
 const flowAgendar = require("./flows/flowAgendar.js");
 const flowGeminiIA = require("./flows/flowGeminiIA.js");
-const flowConfirmarCita = require("./flows/flowConfirmarCita.js")
+const flowConfirmarCita = require("./flows/flowConfirmarCita.js");
 
-// Función principal del bot
 const main = async () => {
-  const adapterDB = new MongoAdapter({
-    dbUri: process.env.MONGO_DB_URI,
-    dbName: "Asistavetdb"
-  });
-  
-  const adapterFlow = createFlow([
-    flowPrincipal,
-    menuFlow,
-    flowEmergenciaRest,
-    flowConsultas,
-    flowVacuna,
-    flowCirugia, 
-    flowAgendar,
-    flowGeminiIA,
-    flowConfirmarCita
-  ]);
+  try {
+    // Validar variable de entorno Mongo
+    if (!process.env.MONGO_DB_URI || !process.env.MONGO_DB_URI.startsWith('mongodb')) {
+      throw new Error('❌ URI de Mongo no definida o inválida. Verifica la variable MONGO_DB_URI en Railway o en tu entorno.');
+    }
 
-  const adapterProvider = createProvider(BaileysProvider);
-  
-  createBot({
-    flow: adapterFlow,
-    provider: adapterProvider,
-    database: adapterDB,
-  });
+    console.log("✅Conectando a Mongo:",)
 
- 
+    // Crear adaptador de base de datos
+    const adapterDB = new MongoAdapter({
+      dbUri: process.env.MONGO_DB_URI,
+      dbName: "Asistavetdb",
+    });
 
-  QRPortalWeb();
+    // Crear flujo principal con todos los flujos importados
+    const adapterFlow = createFlow([
+      flowPrincipal,
+      menuFlow,
+      flowEmergenciaRest,
+      flowConsultas,
+      flowVacuna,
+      flowCirugia,
+      flowAgendar,
+      flowGeminiIA,
+      flowConfirmarCita,
+    ]);
+
+    // Crear proveedor Baileys para WhatsApp
+    const adapterProvider = createProvider(BaileysProvider);
+
+    // Crear el bot con configuración
+    createBot({
+      flow: adapterFlow,
+      provider: adapterProvider,
+      database: adapterDB,
+    });
+
+    // Iniciar el portal web para QR
+    QRPortalWeb();
+
+    console.log("🤖 Bot iniciado con éxito.");
+
+  } catch (error) {
+    console.error("❌ Error en la inicialización del bot:", error);
+    process.exit(1); // Salir con error para que la plataforma detecte fallo
+  }
 };
 
 main();
