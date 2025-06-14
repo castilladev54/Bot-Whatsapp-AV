@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
+const { addKeyword,} = require("@bot-whatsapp/bot");
 
 const menuPath = path.join(__dirname, "prompts", "prompt.txt");
 const menu = fs.readFileSync(menuPath, "utf8");
@@ -14,7 +14,7 @@ const menuFlow = addKeyword("Ayuda", { sensitive: false }).addAnswer(
   menu,
   { capture: true },
   async (ctx, { gotoFlow, fallBack, endFlow }) => {
-    // Removido flowDynamic de los parámetros
+  
 
     if (!["1", "2", "3", "4", "5", "0"].includes(ctx.body)) {
       return fallBack(

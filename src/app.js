@@ -6,8 +6,7 @@ const {
 } = require("@bot-whatsapp/bot");
 const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
-//const MockAdapter = require("@bot-whatsapp/database/mock");
-const MockAdapter = require("@bot-whatsapp/database/mongo");
+const MongoAdapter = require("@bot-whatsapp/database/mongo");
 require("dotenv").config();
 
 // Importación de flujos separados (Clean Architecture)
@@ -23,7 +22,10 @@ const flowConfirmarCita = require("./flows/flowConfirmarCita.js")
 
 // Función principal del bot
 const main = async () => {
-  const adapterDB = new MockAdapter({dbUri: process.env.MONGO_DB_URI,dbName: "Asistavetdb"});
+  const adapterDB = new MongoAdapter({
+    dbUri: process.env.MONGO_DB_URI,
+    dbName: "Asistavetdb"
+  });
   
   const adapterFlow = createFlow([
     flowPrincipal,
@@ -44,6 +46,8 @@ const main = async () => {
     provider: adapterProvider,
     database: adapterDB,
   });
+
+ 
 
   QRPortalWeb();
 };
