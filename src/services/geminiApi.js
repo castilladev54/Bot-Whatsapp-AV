@@ -10,7 +10,7 @@ async function startChat() {
   const model = genAI.getGenerativeModel({ 
     model: "gemini-1.5-flash",
     generationConfig: {
-      maxOutputTokens: 800,
+      maxOutputTokens: 300,
       temperature: 0,
       
     },

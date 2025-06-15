@@ -4,7 +4,7 @@ const { addKeyword} = require("@bot-whatsapp/bot");
 
 // Flujo: Cirugía (Esterilización Felina)
 // RECOMENDACIÓN: Usa palabras clave explícitas o el número de opción del menú
-const flowCirugia = addKeyword(["cirugia", "esterilizacion",], { sensitive: true }) // Added specific keywords and number '4'
+const flowCirugia = addKeyword(["cirugia", "esterilizacion", "castrar"], { sensitive: true }) // Added specific keywords and number '4'
   .addAnswer([
   "🐾 *PROGRAMA DE ESTERILIZACIÓN FELINA* 🐾",
   " ",

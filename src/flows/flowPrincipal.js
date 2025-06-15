@@ -23,7 +23,7 @@ const flowPrincipal = addKeyword(EVENTS.WELCOME)
     if (msg.includes("cita") || msg.includes("agendar")) return gotoFlow(require('./flowAgendar.js')); // si usas agendamiento
   })
   .addAction(async (ctx) => {
-    console.log(`🔔 Nuevo usuario: ${ctx.from} - ${new Date().toLocaleString()}`);
+    //console.log(`🔔 Nuevo usuario: ${ctx.from} - ${new Date().toLocaleString()}`);
     // Aquí puedes guardar en MongoDB: await registrarIngreso(ctx.from);
   })
 

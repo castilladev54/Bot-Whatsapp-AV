@@ -1,7 +1,7 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 
 
-const flowConfirmarCita = addKeyword("confirmar_cita")
+const flowConfirmarCita = addKeyword(["confirmar_cita"])
 .addAction( async (_, { state, flowDynamic }) => {
   const myState = await state.getMyState();
 

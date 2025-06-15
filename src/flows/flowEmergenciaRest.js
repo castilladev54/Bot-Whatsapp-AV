@@ -1,7 +1,5 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 const { askAndRespond } = require("../services/geminiApi.js");
-
-
 // Servicios y utilidades
 const { validateField } = require("../utils/validationUtils.js");
 const { buildEmergencyPrompt } = require("../utils/promptBuilder.js");

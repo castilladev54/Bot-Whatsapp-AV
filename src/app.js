@@ -1,80 +1,62 @@
-// src/app.js
-require("dotenv").config();
-const {
-  createBot,
-  createProvider,
-  createFlow,
-} = require("@bot-whatsapp/bot");
+
+const { createBot, createProvider, createFlow } = require("@bot-whatsapp/bot");
 const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
-const MongoAdapter = require("@bot-whatsapp/database/mongo");
+const { connectToMongoDB } = require("./config/db.config");
+const flowPrincipal = require("./flows/flowPrincipal");
+const menuFlow = require("./flows/menuFlow");
+const flowEmergenciaRest = require("./flows/flowEmergenciaRest");
+const flowConsulta = require("./flows/flowConsulta");
+const flowVacuna = require("./flows/flowVacuna");
+const flowCirugia = require("./flows/flowCirugia");
+const flowAgendar = require("./flows/flowAgendar");
 
+const flowConfirmarCita = require("./flows/flowConfirmarCita");
 
-// Importación de flujos separados (Clean Architecture)
-const flowPrincipal = require("./flows/flowPrincipal.js");
-const menuFlow = require("./flows/menuFlow.js");
-const flowEmergenciaRest = require("./flows/flowEmergenciaRest.js");
-const flowConsultas = require("./flows/flowConsulta.js");
-const flowVacuna = require("./flows/flowVacuna.js");
-const flowCirugia = require("./flows/flowCirugia.js");
-const flowAgendar = require("./flows/flowAgendar.js");
-const flowGeminiIA = require("./flows/flowGeminiIA.js");
-const flowConfirmarCita = require("./flows/flowConfirmarCita.js");
+// Importación de flujos
+const flows = [
+  flowPrincipal,
+  menuFlow,
+  flowEmergenciaRest,
+  flowConsulta,
+  flowVacuna,
+  flowCirugia,
+  flowAgendar,
+
+  flowConfirmarCita,
+];
 
 const main = async () => {
+  //console.log("🚀 Iniciando bot...");
   try {
-    // Validar variable de entorno Mongo
-    if (!process.env.MONGO_URL || !process.env.MONGO_URL.startsWith('mongodb')) {
-      throw new Error('❌ URI de Mongo no definida o inválida. Verifica la variable MONGO_DB_URI en Railway o en tu entorno.');
-    }
+    //1.Conectar a la base de datos
+    const adapterDB = await connectToMongoDB(); 
 
-    console.log("✅Conectando a Mongo:",)
+    // 2. Crear flujos
+    const adapterFlow = createFlow(flows);
+    //console.log("✅ Flujos cargados correctamente");
+    //console.log(`📦 Total de flujos: ${flows.length}`);
 
-    // Crear adaptador de base de datos
-    const adapterDB = new MongoAdapter({
-      dbUri: process.env.MONGO_URL,
-      dbName: "Asistavetdb",  dbOptions: {
-    tls: true,
-    tlsAllowInvalidCertificates: false,
-    retryWrites: true,
-    w: "majority",
-    connectTimeoutMS: 30000,
-    socketTimeoutMS: 30000,
-  }
-    });
-
-    // Crear flujo principal con todos los flujos importados
-    const adapterFlow = createFlow([
-      flowPrincipal,
-      menuFlow,
-      flowEmergenciaRest,
-      flowConsultas,
-      flowVacuna,
-      flowCirugia,
-      flowAgendar,
-      flowGeminiIA,
-      flowConfirmarCita,
-    ]);
-
-    // Crear proveedor Baileys para WhatsApp
+    // 3. Configurar proveedor
     const adapterProvider = createProvider(BaileysProvider);
 
-    // Crear el bot con configuración
+    // 4. Crear el bot
+    //console.log("🤖 Creando instancia del bot...");
     createBot({
       flow: adapterFlow,
       provider: adapterProvider,
       database: adapterDB,
     });
 
-    // Iniciar el portal web para QR
+    // 5. Iniciar portal QR
     QRPortalWeb();
-
-    console.log("🤖 Bot iniciado con éxito.");
-
+    //console.log("✨ Bot iniciado correctamente");
   } catch (error) {
-    console.error("❌ Error en la inicialización del bot:", error);
-    process.exit(1); // Salir con error para que la plataforma detecte fallo
+    console.error("💥 ERROR CRÍTICO:", error.message);
+    console.error("Stack trace:", error.stack);
+    process.exit(1);
   }
 };
 
+// Ejecutar la aplicación
 main();

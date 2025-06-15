@@ -1,10 +1,10 @@
 // 📁 src/flows/flowAgendar.js
 
-const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
+const { addKeyword } = require("@bot-whatsapp/bot");
 
 // Flujo: Agendar citas
 
-const flowAgendar = addKeyword(EVENTS.ACTION, { sensitive: true }) // Se agregaron palabras clave explícitas y el número '5'
+const flowAgendar = addKeyword(["pedir", "cita", "precio", "consulta"]) // Se agregaron palabras clave explícitas y el número '5'
   .addAnswer(
     "¡Excelente! Para agendar tu cita 📆, necesito algunos datos.📍¿De dónde nos escribes? O ¿Dónde se encuentra el paciente?",
     { capture: true },

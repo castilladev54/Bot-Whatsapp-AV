@@ -2,7 +2,7 @@ const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
 
 // Flujo: Vacunación
-const flowVacuna = addKeyword(EVENTS.ACTION).addAnswer(
+const flowVacuna = addKeyword("vacuna", "vacunación", "inyección", "vacunar" ).addAnswer(
   [
     [
       "🐕 *VACUNACIÓN CANINA* 🏡\n" +
