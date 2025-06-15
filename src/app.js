@@ -33,7 +33,14 @@ const main = async () => {
     // Crear adaptador de base de datos
     const adapterDB = new MongoAdapter({
       dbUri: process.env.MONGO_URL,
-      dbName: "Asistavetdb",
+      dbName: "Asistavetdb",  dbOptions: {
+    tls: true,
+    tlsAllowInvalidCertificates: false,
+    retryWrites: true,
+    w: "majority",
+    connectTimeoutMS: 30000,
+    socketTimeoutMS: 30000,
+  }
     });
 
     // Crear flujo principal con todos los flujos importados
