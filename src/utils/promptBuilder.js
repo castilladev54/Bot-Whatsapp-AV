@@ -78,8 +78,8 @@ Tu respuesta DEBE ser empática, clara, no técnica y ABSOLUTAMENTE EN EL SIGUIE
 NUESTRA EVALUACIÓN Y LO QUE RECOMENDAMOS:
 [Una frase sencilla sobre lo que parece estar ocurriendo. Sin tecnicismos. Prioriza la urgencia si aplica.]
 INFORMACIÓN DE CONTACTO:
-[${locationRecommendation}]
-[${pricingInfo}]
+${locationRecommendation}
+${pricingInfo}
 PRÓXIMO PASOS:
 1️⃣ Para CONFIRMAR CITA
 2️⃣ Para VOLVER AL MENÚ

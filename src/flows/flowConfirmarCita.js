@@ -1,7 +1,7 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 
 
-const flowConfirmarCita = addKeyword(["confirmar_cita"])
+const flowConfirmarCita = addKeyword(["confirmar"])
 .addAction( async (_, { state, flowDynamic }) => {
   const myState = await state.getMyState();
 
@@ -19,7 +19,8 @@ const flowConfirmarCita = addKeyword(["confirmar_cita"])
 
 	  await flowDynamic(resumen);
 	  await flowDynamic("✅ ¡Gracias por tus datos! Nos pondremos en contacto *a primera hora* del día hábil más cercano para confirmar los detalles de tu cita. ¡Atento a tu teléfono!");
-	}
-  );
+	  // ✅ Limpiamos el estado tras finalizar
+      await state.clear();
+	});
 
 module.exports= flowConfirmarCita;

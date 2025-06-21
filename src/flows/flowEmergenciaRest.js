@@ -4,11 +4,13 @@ const { askAndRespond } = require("../services/geminiApi.js");
 const { validateField } = require("../utils/validationUtils.js");
 const { buildEmergencyPrompt } = require("../utils/promptBuilder.js");
 const { parseGeminiResponse } = require("../services/geminiServices.js");
+const menuFlow=require("./menuFlow.js");
+const flowConfirmarCita = require("./flowConfirmarCita.js");
 
 const flowEmergenciaRest = addKeyword(["emergencia", "urgencia"], {
   sensitive: true,
 })
-  .addAnswer("¡Hola! Soy un Asistente 🤖 ¿Qué síntomas presenta tu animal de compañía y desde cuándo?", {
+  .addAnswer("¿Qué síntomas presenta tu animal de compañía y desde cuándo?", {
     capture: true,
   }, async (ctx, { state, fallBack }) => {
     const input = ctx.body.trim();
@@ -91,6 +93,7 @@ const flowEmergenciaRest = addKeyword(["emergencia", "urgencia"], {
         "📞 0424-555-5555",
         "📍 Ocumare del Tuy, Calle Sucre"
       ]);
+      await state.clear();
       return gotoFlow(menuFlow);
     }
   })
@@ -109,19 +112,19 @@ const flowEmergenciaRest = addKeyword(["emergencia", "urgencia"], {
       
       if (msg === "1") {
         await flowDynamic("🚀 ¡Perfecto! Vamos a agendar tu cita.");
-         return gotoFlow(require("./flowConfirmarCita.js"));
+         return gotoFlow(flowConfirmarCita);
       } 
       
       if (msg === "2") {
         await flowDynamic("🏡 Volviendo al menú principal...");
-        return gotoFlow(require("./menuFlow.js"));
+        await state.clear();
+        return gotoFlow(menuFlow);
       }
 
       return fallBack("❌ Opción no válida. Por favor escribe *1* o *2*.");
     } catch (error) {
       console.error("Error en addAction:", error);
-      await flowDynamic("🔴 Error inesperado. Redirigiendo al menú principal...");
-      return gotoFlow(require("./menuFlow.js"));
+      
     }
   }
 )

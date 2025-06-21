@@ -1,32 +1,34 @@
 {
-    "name": "base-bailey-memory",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/app.js",
-    "scripts": {
-        "prestart": "npx eslint . --no-ignore",
-        "pre-copy": "cd .. && npm run  copy.lib base-baileys-memory",
-        "start": "node src/app.js"
-    },
-    "keywords": [],
-    "dependencies": {
-        "@bot-whatsapp/bot": "latest",
-        "@bot-whatsapp/cli": "latest",
-        "@bot-whatsapp/database": "latest",
-        "@bot-whatsapp/portal": "latest",
-        "@bot-whatsapp/provider": "latest",
-        "@google/generative-ai": "^0.24.1",
-        "@whiskeysockets/baileys": "6.5.0",
-        "cache-manager": "5.2.4",
-        "dotenv": "^16.5.0",
-        "mongodb": "^6.17.0",
-        "mongoose": "^8.15.2",
-        "wa-sticker-formatter": "4.4.4"
-    },
-    "devDependencies": {
-        "eslint": "^8.52.0",
-        "eslint-plugin-bot-whatsapp": "latest"
-    },
-    "author": "",
-    "license": "ISC"
+  "name": "bot-whatsapp-asistavet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "prestart": "npx eslint . --no-ignore",
+    "pre-copy": "cd .. && npm run  copy.lib base-baileys-memory",
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@bot-whatsapp/bot": "latest",
+    "@bot-whatsapp/cli": "latest",
+    "@bot-whatsapp/database": "latest",
+    "@bot-whatsapp/portal": "latest",
+    "@bot-whatsapp/provider": "latest",
+    "@google/generative-ai": "^0.24.1",
+    "@whiskeysockets/baileys": "6.5.0",
+    "cache-manager": "5.2.4",
+    "dotenv": "^16.5.0",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.15.2",
+    "wa-sticker-formatter": "4.4.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-bot-whatsapp": "latest",
+    "nodemon": "^3.1.10"
+  },
+  "author": "Castilladev",
+  "license": "ISC"
 }

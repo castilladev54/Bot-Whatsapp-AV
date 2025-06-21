@@ -1,47 +1,56 @@
-const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
+// ✅ Importamos flujos al inicio
+const flowAgendar = require("./flowAgendar.js");
+const menuFlow = require("./menuFlow.js");
 
+const { addKeyword } = require("@bot-whatsapp/bot");
 
 // Flujo: Vacunación
-const flowVacuna = addKeyword("vacuna", "vacunación", "inyección", "vacunar" ).addAnswer(
-  [
-    [
-      "🐕 *VACUNACIÓN CANINA* 🏡\n" +
-        "• Servicio en domicilio: *$45*\n" +
-        "✅ *Incluye:*\n" +
-        "  - Vacuna Séxtuple\n" +
-        "  - Vacuna Antirrábica\n" +
-        "  - Desparasitación completa\n" +
-        "  - Certificado de vacunación\n" +
-        "  - Asesoría veterinaria",
+const flowVacuna = addKeyword(["vacuna", "vacunación", "inyección", "vacunar"], { sensitive: true })
+  .addAnswer([
+    "🐕 *VACUNACIÓN CANINA* 🏡",
+    "• Servicio en domicilio: *$45*",
+    "✅ *Incluye:*",
+    "  - Vacuna Séxtuple",
+    "  - Vacuna Antirrábica",
+    "  - Desparasitación completa",
+    "  - Certificado de vacunación",
+    "  - Asesoría veterinaria",
+    "",
+    "🐈 *VACUNACIÓN FELINA* 🏡",
+    "• Servicio en domicilio: *$55*",
+    "✅ *Incluye:*",
+    "  - Vacuna Triple Felina",
+    "  - Vacuna Antirrábica",
+    "  - Desparasitación completa",
+    "  - Certificado de vacunación",
+    "  - Asesoría especializada",
+    "",
+    "📌 *Nota:* Los precios pueden variar según la ubicación y número de mascotas",
+    "",
+    "🏥 *PRECIOS EN NUESTRA SEDE:*",
+    "🐶 Perros: *$35*",
+    "🐱 Gatos: *$45*",
+    "",
+    "📍 *Beneficios adicionales:*",
+    "• Atención personalizada",
+    "• Registro digital de vacunas",
+    "• Recordatorio para próximas dosis",
+    "",
+    "¿Deseas agendar ahora? (*SI* o *NO*)"
+  ].join("\n"), {
+    capture: true
+  }, async (ctx, { gotoFlow, fallBack }) => {
+    const response = ctx.body.toLowerCase().trim();
 
-      "\n🐈 *VACUNACIÓN FELINA* 🏡\n" +
-        "• Servicio en domicilio: *$55*\n" +
-        "✅ *Incluye:*\n" +
-        "  - Vacuna Triple Felina\n" +
-        "  - Vacuna Antirrábica\n" +
-        "  - Desparasitación completa\n" +
-        "  - Certificado de vacunación\n" +
-        "  - Asesoría especializada",
+    if (response === "si") {
+      return gotoFlow(flowAgendar); // ✅ Usamos el flujo importado
+    } else if (response === "no") {
+      await flowDynamic("🏡 Volviendo al menú principal...");
+      return gotoFlow(menuFlow); // ✅ Mejor UX que endFlow
+    }
 
-        "\n📌 *Nota:* Los precios pueden variar según la ubicación y número de mascotas",
-
-      "\n🏥 *PRECIOS EN NUESTRA SEDE:*\n" + "🐶 Perros: *$35*\n" + "🐱 Gatos: *$45*",
-
-      "\n📍 *Beneficios adicionales:*\n" +
-        "• Atención personalizada\n" +
-        "• Registro digital de vacunas\n" +
-        "• Recordatorio para próximas dosis \n",
-        "",
-        "¿Deseas agendar ahora? (*SI* o *NO*)",
-
-      
-    ],
-  ].join("\n"),
-  { capture: true },
-  async (ctx, { gotoFlow, endFlow }) => {
-    if (ctx.body.toLowerCase() === "si") return gotoFlow(require("./flowAgendar.js"));
-    return endFlow("🔄 Puedes volver a escribir *menu* cuando lo necesites.");
-  }
-);
+    // Opción no válida
+    return fallBack("❌ Por favor responde *SI* o *NO*.");
+  });
 
 module.exports = flowVacuna;
