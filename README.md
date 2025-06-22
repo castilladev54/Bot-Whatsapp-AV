@@ -42,12 +42,8 @@ git clone https://github.com/tuusuario/bot-whatsapp-asistavet.git
 cd bot-whatsapp-asistavet
 2. Configurar variables de entorno
 Crea un archivo .env en la raíz:
-
-env
-Copiar
-Editar
-MONGO_URL=mongodb://mongo:<tu_password>@mongodb.railway.internal:27017/Asistavetdb
-PORT=3001
+MONGO_URL=mongodb:
+PORT=
 3. Iniciar con Docker
 Esto construirá tu contenedor, descargará las dependencias y levantará MongoDB y el bot en producción.
 
@@ -77,14 +73,7 @@ src/
 ├── config/               # Configuración MongoDB y otras
 ├── app.js                # Entrada principal
 └── test-load.js          # Script de prueba con Artillery
-📌 To-Do (Producción)
- Integrar alertas vía correo o webhook en caso de errores
 
- Exportar logs con Winston o pino
-
- Protección con rate-limit por IP (si se usa endpoint)
-
- Redundancia en MongoDB Atlas
 
 📬 Contacto
 Desarrollado por @Castilla Dev
