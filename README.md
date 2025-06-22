@@ -87,7 +87,7 @@ src/
  Redundancia en MongoDB Atlas
 
 📬 Contacto
-Desarrollado por Carlos @ Castilla Dev
+Desarrollado por @Castilla Dev
 📞 WhatsApp: +58 0426-0383454
 📍 Distrito Capital, Venezuela
 
